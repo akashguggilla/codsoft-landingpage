@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cycle Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #3b3c36; /* Updated body background color */
+            color: #fff;
+        }
+
+        header {
+            background: #08e8de; /* Updated header background color */
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        section {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 2em 0;
+
+        }
+
+        .cycle-image {
+            width: 80%;
+            height: 90%;
+            margin: 5px 5px 5px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .promo {
+            flex: 1;
+            padding: 0 2em;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #08e8de; /* Updated button background color */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .benefits-section {
+            background: #fff;
+            padding: 2em;
+            margin-top: 2em;
+            display: flex;
+            align-items: center;
+        }
+
+        .benefits-text {
+            flex: 1;
+            color: maroon;
+            font-family:Arial;
+
+        }
+
+        .benefits-text h3 {
+            font-size: 24px;
+            color: #1b1b1b;
+            margin-bottom: 1em;
+        }
+
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .benefits-list li {
+            font-size: 18px;
+            margin-bottom: 1em;
+        }
+
+        .benefits-section img {
+            width: 20%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-left: 2em;
+        }
+
+        .gallery {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-top: 20px;
+            overflow: hidden; /* Ensure images don't exceed container size */
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px 40px 10px 40px; /* Adjust the border-radius */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 0; /* Adjusted padding to zero */
+        }
+
+        .nav-symbols {
+            font-size: 24px;
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            background: #333;
+            padding: 10px;
+            border-radius: 50%;
+            transition: background 0.3s, color 0.3s;
+            z-index: 2; /* Ensure the symbols appear on top of images */
+        }
+
+        .nav-symbols:hover {
+            color: #333;
+            background: #fff;
+        }
+
+        .nav-left {
+            left: 20px;
+        }
+
+        .nav-right {
+            right: 20px;
+        }
+
+        footer {
+            background: #08e8de; /* Updated footer background color */
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <marquee behavior="scroll" direction="left" scrollamount="5">
+            <h1>****** Get 15% Off on Your Next Ride! ******  Get 15% Off on Your Next Ride! ******  Get 15% Off on Your Next Ride! ******</h1>
+        </marquee>
+    </header>
+
+    <section>
+        <img src="cycle_image1.jpg" alt="Cycle" class="cycle-image">
+        <div class="promo">
+            <img src="new.gif" alt="Benefits" class="benefits-image">
+            <h2>Cycle Shop</h2>
+            <p>Explore our premium collection of cycles and enjoy a 15% discount on your purchase. Hurry, limited time offer!</p>
+            <button onclick="location.href='#'">Order Now</button>
+        </div>
+    </section>
+
+    <div class="benefits-section">
+        <div class="benefits-text">
+            <h3>Benefits of Cycling</h3>
+            <ul class="benefits-list">
+                <li>Cycling may help you lose weight</li>
+                <li>Cycling will help strengthen your legs</li>
+                <li>Cycling is good for beginners</li>
+                <li>Cycling may lower cholesterol</li>
+                <li>Cycling boosts mental health and brain power</li>
+            </ul>
+        </div>
+        <img src="cycling.gif" alt="Benefits" class="benefits-image">
+    </div>
+
+    <div class="gallery">
+        <div class="nav-symbols nav-left" onclick="changeImage(-1)">&lt;</div>
+        <img src="cycle-12.jpg" alt="Image 1">
+        <img src="cycle-13.jpg" alt="Image 2">
+        <img src="cycle-14.jpg" alt="Image 3">
+        <img src="cycle-16.jpg" alt="Image 4">
+        <img src="cycle-19.jpeg" alt="Image 5">
+        <img src="cycle 18.jpeg" alt="Image 6">
+        <div class="nav-symbols nav-right" onclick="changeImage(1)">&gt;</div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Cycle Shop. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.gallery img');
+
+        function changeImage(direction) {
+            currentIndex += direction;
+
+            if (currentIndex < 0) {
+                currentIndex = images.length - 1;
+            } else if (currentIndex >= images.length) {
+                currentIndex = 0;
+            }
+
+            updateGallery();
+        }
+
+        function updateGallery() {
+            images.forEach((image, index) => {
+                if (index === currentIndex) {
+                    image.style.display = 'block';
+                } else {
+                    image.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
